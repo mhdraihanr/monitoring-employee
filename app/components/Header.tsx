@@ -79,9 +79,9 @@ const Header: React.FC = () => {
                 <div
                   className="font-mono font-semibold text-blue-600"
                   style={{
-                    fontSize: "calc(1.25rem + 0.75vw)",
+                    fontSize: "calc(1rem + 0.5vw)",
                     fontFamily: "'Inter', 'Segoe UI', 'Roboto', monospace",
-                    fontWeight: "600",
+                    fontWeight: "500",
                   }}
                 >
                   {mounted ? formatTime(currentTime) : "--:--:--"}
