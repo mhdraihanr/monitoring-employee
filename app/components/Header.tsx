@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-10">
-      <div className="max-w-7xl mx-auto px-8 py-6">
+      <div className="max-w-full mx-auto p-responsive-lg px-8 pt-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             {/* Logo */}
@@ -43,20 +43,47 @@ const Header: React.FC = () => {
               <img
                 src="/images/logo.png"
                 alt="Company Logo"
-                className="w-20 h-20 object-contain drop-shadow-lg"
+                className="object-contain drop-shadow-lg"
+                style={{
+                  width: "calc(3rem + 1.5vw)",
+                  height: "calc(3rem + 1.5vw)",
+                }}
               />
             </div>
 
             {/* Company info */}
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 text-shadow">
+              <h1
+                className="font-bold text-gray-900 text-shadow"
+                style={{
+                  fontSize: "calc(1rem + 1.5vw)",
+                  lineHeight: "1.1",
+                  fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                }}
+              >
                 PUPUK KUJANG – GATE NPK2
               </h1>
-              <div className="flex items-center space-x-6 mt-2">
-                <p className="text-lg text-gray-600 font-medium">
+              <div className="flex items-center space-x-4 mt-1">
+                <p
+                  className="text-gray-600 font-medium"
+                  style={{
+                    fontSize: "calc(1rem + 0.5vw)",
+                    fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
+                    fontWeight: "500",
+                  }}
+                >
                   {mounted ? formatDate(currentTime) : "Loading..."}
                 </p>
-                <div className="text-2xl font-mono font-semibold text-blue-600">
+                <div
+                  className="font-mono font-semibold text-blue-600"
+                  style={{
+                    fontSize: "calc(1.25rem + 0.75vw)",
+                    fontFamily: "'Inter', 'Segoe UI', 'Roboto', monospace",
+                    fontWeight: "600",
+                  }}
+                >
                   {mounted ? formatTime(currentTime) : "--:--:--"}
                 </div>
               </div>

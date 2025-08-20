@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -11,24 +11,44 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  position: relative;
+  --base-font-size: calc(0.8rem + 0.5vw);
+  --small-font-size: calc(0.6rem + 0.3vw);
+  --medium-font-size: calc(1rem + 0.6vw);
+  --large-font-size: calc(1.5rem + 1vw);
+  --xl-font-size: calc(2rem + 2.375vw);
+  --title-font-size: calc(0.75rem + 1vw);
+  --icon-size: calc(1rem + 0.8vw);
+  --padding-sm: calc(0.5rem + 0.3vw);
+  --padding-md: calc(1rem + 0.5vw);
+  --padding-lg: calc(1.5rem + 0.8vw);
 }
 
 .bg-pattern {
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(20, 184, 166, 0.05) 0%, transparent 50%),
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(20, 184, 166, 0.05) 0%,
+      transparent 50%
+    ),
     linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px),
     linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
 }
 
 .card-shadow {
-  box-shadow: 
-    0 10px 25px -3px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
@@ -38,8 +58,7 @@ body {
 
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 
-    0 20px 35px -3px rgba(0, 0, 0, 0.15),
+  box-shadow: 0 20px 35px -3px rgba(0, 0, 0, 0.15),
     0 8px 10px -2px rgba(0, 0, 0, 0.1);
 }
 
@@ -96,4 +115,8 @@ body {
 
 .count-up {
   animation: countUp 0.6s ease-out;
+}
+
+.text-responsive-title {
+  font-size: var(--title-font-size);
 }
