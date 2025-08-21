@@ -2,13 +2,60 @@
 
 import React, { useState, useEffect } from "react";
 
+interface CardStyle {
+  bg: string;
+  accent: string;
+  iconBg: string;
+  iconColor: string;
+  border: string;
+}
+
 interface StatCardProps {
   title: string;
   value: number;
   icon: React.ReactNode;
   gradientClass: string;
   delay: number;
+  cardIndex?: number;
 }
+
+const cardStyles: CardStyle[] = [
+  {
+    bg: "bg-emerald-500/90",
+    accent: "from-emerald-500/20 to-green-500/25",
+    iconBg: "bg-white",
+    iconColor: "text-emerald-700",
+    border: "border-emerald-800/50",
+  },
+  {
+    bg: "bg-blue-500/90",
+    accent: "from-blue-500/20 to-cyan-500/25",
+    iconBg: "bg-white",
+    iconColor: "text-blue-700",
+    border: "border-blue-800/50",
+  },
+  {
+    bg: "bg-purple-800/90",
+    accent: "from-yellow-500/20 to-orange-500/25",
+    iconBg: "bg-white",
+    iconColor: "text-yellow-700",
+    border: "border-yellow-800/50",
+  },
+  {
+    bg: "bg-amber-500/90",
+    accent: "from-amber-500/20 to-orange-500/25",
+    iconBg: "bg-white",
+    iconColor: "text-amber-700",
+    border: "border-amber-800/50",
+  },
+  {
+    bg: "bg-red-500/90",
+    accent: "from-red-500/20 to-pink-500/25",
+    iconBg: "bg-white",
+    iconColor: "text-red-700",
+    border: "border-red-800/50",
+  },
+];
 
 const StatCard: React.FC<StatCardProps> = ({
   title,
@@ -16,8 +63,10 @@ const StatCard: React.FC<StatCardProps> = ({
   icon,
   gradientClass,
   delay,
+  cardIndex = 0,
 }) => {
   const [displayValue, setDisplayValue] = useState(0);
+  const currentStyle = cardStyles[cardIndex % cardStyles.length];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,23 +89,27 @@ const StatCard: React.FC<StatCardProps> = ({
   }, [value, delay]);
 
   return (
-    <div className="bg-white rounded-2xl p-8 card-shadow card-hover relative overflow-hidden group text-center">
+    <div
+      className={`${currentStyle.bg} ${currentStyle.border} border rounded-2xl p-8 card-shadow card-hover relative overflow-hidden group text-center`}
+    >
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-33 h-33 opacity-5 transform translate-x-8 -translate-y-8">
-        <div className={`w-full h-full ${gradientClass} rounded-full`}></div>
+      <div className="absolute top-0 right-0 w-33 h-33 opacity-10 transform translate-x-8 -translate-y-8">
+        <div
+          className={`w-full h-full bg-gradient-to-br ${currentStyle.accent} rounded-full`}
+        ></div>
       </div>
 
       {/* Icon */}
       <div
-        className={`inline-flex p-4 rounded-xl ${gradientClass} mb-6 mx-auto`}
+        className={`inline-flex p-4 rounded-xl ${currentStyle.iconBg} mb-6 mx-auto`}
       >
-        <div className="text-white">{icon}</div>
+        <div className={currentStyle.iconColor}>{icon}</div>
       </div>
 
       {/* Value */}
       <div className="count-up">
         <div
-          className="font-bold text-gray-900 mb-4 text-shadow"
+          className="font-bold text-white mb-4 text-shadow"
           style={{
             fontSize: "60px",
             lineHeight: "1",
@@ -70,7 +123,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
         {/* Title */}
         <div
-          className="text-gray-700 font-semibold leading-relaxed text-responsive-title"
+          className="text-white font-semibold leading-relaxed text-responsive-title"
           style={{
             fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
             letterSpacing: "-0.01em",

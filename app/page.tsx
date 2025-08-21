@@ -65,6 +65,7 @@ const HomePage: React.FC = () => {
             icon={stats[0].icon}
             gradientClass={stats[0].gradientClass}
             delay={stats[0].delay}
+            cardIndex={0}
           />
         </div>
 
@@ -78,6 +79,7 @@ const HomePage: React.FC = () => {
                 icon={stat.icon}
                 gradientClass={stat.gradientClass}
                 delay={stat.delay}
+                cardIndex={index + 1}
               />
             </div>
           ))}
